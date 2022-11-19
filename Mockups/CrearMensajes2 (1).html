@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/images/logo.ico') }}" />
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1,5">
+   <title>Lista de Ordenes</title>
+ 
+   <!-- Google Font: Source Sans Pro -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+   <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/fontawesome-free/css/all.min.css">
+   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+   <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+   <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+   <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/jqvmap/jqvmap.min.css">
+   <link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css">
+   <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+   <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/daterangepicker/daterangepicker.css">
+   <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/summernote/summernote-bs4.min.css">
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+   <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/style.css') }}">
+
+ </head>
+ <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+      <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__shake" src="./LogoInstaYa.png" alt="Logo" height="100" width="100">
+      </div>
+      <body style="background-color:#898689;"></body>
+      <div class="">  
+        <section class="content">
+          <div class="container col-10">
+             <div class="contariner alert alert-light" role="alert"><!--Cambio de ancho del contenedor-->
+                  <nav class="navbar navbar-expand-lg"> 
+                    <a class="navbar-brand" href="#">
+                     <img src="./LogoInstaYa.png" width="300px" class="d-inline-block align-top" alt="Logo InstaYa">
+                    </a>
+                    <ul class="navbar-nav ml-auto p-2" role="navigation">
+                      <li class="nav-item1">
+                       <a class="nav-link active" style="color: #231F20; font-family:kanit"href="#tab_1" data-toggle="tab1">Crear Orden</a>
+                      </li>
+                      <li class="nav-item1" onclick="verHistorial()">
+                       <a class="nav-link" style="color: #231F20; font-family:kanit" href="#tab_2" data-toggle="tab2">Listado de Ordenes</a>
+                      </li>
+                      <li class="nav-item1">
+                        <a class="nav-link" style="color: #231F20; font-family:kanit" href="#tab_3" data-toggle="tab3">Cambiar Contraseña</a>
+                      </li> 
+                      <li class="nav-item1">
+                        <a class="nav-link" style="color: #231F20; font-family:kanit" href="/" data-toggle="tab4">Cerrar Sesión</a>
+                      </li> 
+                    </ul>
+                  </nav>  
+              </div>
+              <div class="border-bottom">
+               <div class="row">
+                  <div class="col-12"> 
+                    <div class="card">
+                      <h2 class="m-4 ml-4" style="color: #fdb813; font-family:kanit">Hola Marcela Villegas</h2>
+                      <div class="card-header d-flex p-0">
+                      </div><!-- /.card-header -->
+
+                    <div class="card-body">
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                          <form onsubmit="return enviarCorreo()">
+                            <div class="col-md-4">
+                              <div class="card">
+                                <Input type="date">Fecha</Input><Input type="time">Hora</Input>
+                              </div>
+                            </div>
+                            
+                            
+                            
+                          </form>
+                        </div>
+
+                        <div class="tab-pane" id="tab_2" name="tab_2">
+                         <div class="col-12">
+                           <div style="font-family:kanit">Gestión de paquetes - Listado de órdenes</div>
+                           <br>
+                        
+                            <table width="1200px" height="20px" class="table table-hover table-bordered" style="font-family:kanit">
+                             <thead>
+                                 <tr style="background-color:#231F20">
+                                    <th style="color: #FDB813; text-align: center" scope=># Servicio</th>
+                                    <th style="color: #FDB813; text-align: center" scope=>Fecha</th>
+                                    <th style="color: #FDB813; text-align: center" scope=>Destinatario</th>
+                                    <th style="color: #FDB813; text-align: center" scope=>Ciudad Entrega</th>
+                                    <th style="color: #FDB813; text-align: center" scope=>Dirección Entrega</th>
+                                    <th style="color: #FDB813; text-align: center" scope=>Estado</th>
+                                 </tr>
+                                 <tr style="background-color:#231F20">
+                                   <td style="color: #FDB813; text-align: center" scope=>1</th>
+                                   <td style="color: #FCFAFC" scope=>20/07/2021</th>
+                                   <td style="color: #FCFAFC" scope=>Martha Suarez</th>
+                                   <td style="color: #FCFAFC" scope=>Cartagena</th>
+                                   <td style="color: #FCFAFC" scope=>Calle 10 # 12 -15</th>
+                                   <td style="color: #FCFAFC" scope=>Cumplido</th>
+                                </tr>
+                                <tr style="background-color:#231F20">
+                                  <td style="color: #FDB813; text-align: center" scope=>2</th>
+                                  <td style="color: #FCFAFC" scope=>14/11/2021</th>
+                                  <td style="color: #FCFAFC" scope=>Rodrigo Perez</th>
+                                  <td style="color: #FCFAFC" scope=>Bucaramanga</th>
+                                  <td style="color: #FCFAFC" scope=>Carrera 34 # 58-17</th>
+                                  <td style="color: #FCFAFC" scope=>Cumplido</th>
+                               </tr>
+                               <tr style="background-color:#231F20">
+                                <td style="color: #FDB813; text-align: center" scope=>3</th>
+                                <td style="color: #FCFAFC" scope=>25/04/2022</th>
+                                <td style="color: #FCFAFC" scope=>William Herrera</th>
+                                <td style="color: #FCFAFC" scope=>Bogotá</th>
+                                <td style="color: #FCFAFC" scope=>Carrera 54 # 62-148</th>
+                                <td style="color: #FCFAFC" scope=>Cancelado</th>
+                             </tr>
+                             <tr style="background-color:#231F20">
+                              <td style="color: #FDB813; text-align: center" scope=>4</th>
+                              <td style="color: #FCFAFC" scope=>14/07/2022</th>
+                              <td style="color: #FCFAFC" scope=>Angela Valencia</th>
+                              <td style="color: #FCFAFC" scope=>Bogotá</th>
+                              <td style="color: #FCFAFC" scope=>Calle 24 # 89-50</th>
+                              <td style="color: #FCFAFC" scope=>Cumplido</th>
+                           </tr>
+                           <tr style="background-color:#231F20">
+                              <td style="color: #FDB813; text-align: center" scope=>5</th>
+                              <td style="color: #FCFAFC" scope=>15/11/2022</th>
+                              <td style="color: #FCFAFC" scope=>Natalia Gómez</th>
+                              <td style="color: #FCFAFC" scope=>Cali</th>
+                              <td style="color: #FCFAFC" scope=>Calle 12 # 45-22</th>
+                              <td style="color: #FCFAFC" scope=>Guardado</th>
+                          </tr>
+                             <thead>
+                             </table>  
+                        </div>
+                     </div>
+                     <!-- /.tab-pane -->
+                     <div class="tab-pane" id="tab_3">
+                        <div class="container">
+                          <div class="main-body">
+                            <div class="row gutters-sm">
+                              <div class="col-md-4 mb-3">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <div class="d-flex flex-column align-items-center text-center">
+                                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                      <div class="mt-3">
+                                        <h4>Ximena Martinez Huerto</h4>
+                                        <p class="text-secondary mb-1">Servicio al Cliente</p>
+                                        <p class="text-muted font-size-sm">Área de Marketing</p>
+                                        <a><button class="btn btn-primary">Cambiar Contraseña</button></a>
+                                        <button class="btn btn-outline-primary">Mensajes</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card mb-3">
+                                  <div class="card-body">
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <h6 class="mb-0">Nombre Completo</h6>
+                                      </div>
+                                      <div class="col-sm-9 text-secondary">
+                                        Ximena Martinez Huerto
+                                      </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <h6 class="mb-0">Email</h6>
+                                      </div>
+                                      <div class="col-sm-9 text-secondary">
+                                        machellseb123@gmail.com
+                                      </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <h6 class="mb-0">ID Empleado</h6>
+                                      </div>
+                                      <div class="col-sm-9 text-secondary">
+                                        198376
+                                      </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <h6 class="mb-0">Fecha de nacimiento</h6>
+                                      </div>
+                                      <div class="col-sm-9 text-secondary">
+                                        10 de Mayo de 1988
+                                      </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <h6 class="mb-0">Dirección</h6>
+                                      </div>
+                                      <div class="col-sm-9 text-secondary">
+                                        Calle 23 # 11 - 50 Granada Meta
+                                      </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                      <div class="col-sm-12">
+                                        <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div> 
+                      </div>
+                     <!-- /.tab-pane -->
+                   </div>
+                   <!-- /.tab-content -->
+                 </div><!-- /.card-body -->
+               </div>
+               <!-- ./card -->
+              </div>
+             <!-- /.col -->
+            </div>
+          </div>
+ 
+           
+         <!-- /.row (main row) -->
+       </div><!-- /.container-fluid -->
+     </section>
+     <!-- /.content -->
+   </div>
+  
+ 
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+  </body>
+ <!-- ./wrapper -->
+ 
+ <!-- jQuery -->
+ <script src="https://adminlte.io/themes/v3/plugins/jquery/jquery.min.js"></script>
+ <script src="https://adminlte.io/themes/v3/plugins/jquery-ui/jquery-ui.min.js"></script>
+ 
+ <!-- Bootstrap 4 -->
+ <script src="https://adminlte.io/themes/v3/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <script src="https://adminlte.io/themes/v3/plugins/chart.js/Chart.min.js"></script>
+ <script src="https://adminlte.io/themes/v3/plugins/sparklines/sparkline.js"></script>
+ <script src="https://adminlte.io/themes/v3/plugins/jqvmap/jquery.vmap.min.js"></script>
+ <script src="https://adminlte.io/themes/v3/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+ <script src="https://adminlte.io/themes/v3/plugins/jquery-knob/jquery.knob.min.js"></script>
+ <script src="https://adminlte.io/themes/v3/plugins/moment/moment.min.js"></script>
+ <script src="https://adminlte.io/themes/v3/plugins/daterangepicker/daterangepicker.js"></script>
+ <script src="https://adminlte.io/themes/v3/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+ <script src="https://adminlte.io/themes/v3/plugins/summernote/summernote-bs4.min.js"></script>
+ <script src="https://adminlte.io/themes/v3/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+ <script src="https://adminlte.io/themes/v3/dist/js/adminlte.js"></script>
+ <script src="https://adminlte.io/themes/v3/dist/js/pages/dashboard.js"></script>
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+ 
+ 
+ <!--<script>
+ 
+ function CambioContraseña(){
+   if ($("#txtnewpass").val()==$("#txtnewpassc").val()){
+       $.ajax({
+         url : 'ActContraseña',
+         data : "Pass="+$("#txtnewpass").val(),
+         type : 'POST',
+         success : function(r){
+             alert(r);        
+         },
+         error : function(xhr, status) {
+           alert('Error intente en otro momento');
+         }
+     });
+ 
+   }
+   else{
+     alert("Error! al confirmar las contraseñas, las contraseñas ingresadas no coinciden, por favor verifiquelas.");
+   }
+ 
+   return false;  
+ }
+ 
+ function verHistorial(){
+   $.ajax({
+     url : 'HistorialMSNEnviados',
+     data : "",
+     type : 'POST',
+     success : function(r){
+         r="<center class='alert alert-info'><strong>Bandeja de Mensajes Enviados </strong></center>"+r;
+         $("#email_enviados").html(r);
+         $('#msnenv').DataTable();         
+     },
+     error : function(xhr, status) {
+       alert('Error intente en otro momento');
+     }
+   });
+ 
+   $.ajax({
+     url : 'HistorialMSNRecibidos',
+     data : "",
+     type : 'POST',
+     success : function(r){
+         r="<center class='alert alert-info'><strong>Bandeja de Mensajes Recibidos</strong></center>"+r;
+         $("#email_recibidos").html(r);
+         $('#msnrec').DataTable();         
+     },
+     error : function(xhr, status) {
+       alert('Error intente en otro momento');
+     }
+   });
+   return false;
+ }
+ 
+ function enviarCorreo(){
+   $.ajax({
+     url : 'enviarCorreo',
+     data : "Asunto="+$("#txtAsuntoMSN").val()+"&CorreoDestino="+$("#sl_destinoMSN").val()+"&Mensaje="+$("#txtMSN").val(),
+     type : 'POST',
+     success : function(r){
+         alert(r);        
+     },
+     error : function(xhr, status) {
+       alert('Error intente en otro momento');
+     }
+   });
+ return false;
+ }
+ 
+ </script>-->
+ 
+ </body>
+ </html>
